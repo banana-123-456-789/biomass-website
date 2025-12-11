@@ -1,9 +1,7 @@
-/* --- 生質能網站 樣式表 (最終版) --- */
+/* --- 生質能網站 樣式表 (手機優化版) --- */
 
-/* 基礎設定 (已套用新字體) */
+/* 基礎設定 */
 body {
-    /* 1. 優先用 'Noto Sans TC' (思源黑體) 
-       2. 如果失敗，才用 sans-serif (系統預設黑體) */
     font-family: 'Noto Sans TC', sans-serif;
     line-height: 1.6;
     background-color: #f4f7f6;
@@ -30,8 +28,6 @@ header {
 header h1 {
     margin: 0;
     font-size: 2.5rem;
-    /* 1. 英文/數字用 'Lato'
-       2. 中文用 'Noto Sans TC' */
     font-family: 'Lato', 'Noto Sans TC', sans-serif;
 }
 header p {
@@ -41,7 +37,7 @@ header p {
 
 /* 導覽列 */
 nav {
-    background-color: #264653; /* 您可以改成 #3a5a40 (森林綠) */
+    background-color: #264653;
     padding: 1rem;
     text-align: center;
     border-radius: 0 0 8px 8px;
@@ -54,10 +50,13 @@ nav a {
     margin: 0 5px;
     border-radius: 5px;
     transition: background-color 0.3s;
+    /* 讓連結在小螢幕上如果換行，會保持一點距離，不會黏在一起 */
+    display: inline-block; 
+    margin-bottom: 5px;
 }
 nav a:hover {
-    background-color: #C0D1B4; /* 淺綠色 */
-    color: #3a5a40;            /* 搭配的深綠色文字 */
+    background-color: #C0D1B4; 
+    color: #3a5a40;           
 }
 
 /* 內容區塊 */
@@ -78,23 +77,22 @@ section:last-child {
     margin-bottom: 0;
 }
 
-/* 標題 H2 (大標題) */
+/* 標題樣式 */
 h2 {
     color: #2a9d8f;
     font-size: 2rem;
     border-bottom: 2px solid #e9c46a;
     padding-bottom: 10px;
-    font-family: 'Lato', 'Noto Sans TC', sans-serif; /* 套用新字體 */
+    font-family: 'Lato', 'Noto Sans TC', sans-serif;
 }
 
-/* 標題 H3 (子標題) (已修正歪掉的問題) */
 h3 {
     color: #264653;
     font-size: 1.5rem;
     margin-top: 2rem;
     margin-bottom: 1rem;
-    margin-left: 0; /* 修正縮排 */
-    font-family: 'Lato', 'Noto Sans TC', sans-serif; /* 套用新字體 */
+    margin-left: 0;
+    font-family: 'Lato', 'Noto Sans TC', sans-serif;
 }
 
 ul {
@@ -106,7 +104,7 @@ li {
     margin-bottom: 10px;
 }
 
-/* --- 圖片區塊樣式 --- */
+/* 圖片區塊樣式 */
 .image-container {
     width: 100%;
     max-height: 400px;
@@ -132,47 +130,32 @@ li {
     padding-bottom: 1.5rem;
     border-bottom: 1px solid #eee;
 }
-/* --- 圖片樣式結束 --- */
 
 
 /* --- 優點與挑戰 (並排) --- */
-
-/* 大容器 (Flex 容器) */
 .pros-cons-container {
-    display: flex;          /* 啟動 Flexbox！讓裡面的項目並排 */
-    flex-direction: row;    /* 方向是橫向 (row) */
-    gap: 30px;              /* 兩個盒子中間的間距 */
-    flex-wrap: wrap;        /* 允許換行 (當螢幕太小時) */
+    display: flex;          
+    flex-direction: row;    
+    gap: 30px;              
+    flex-wrap: wrap;       
 }
 
-/* 優點和挑戰的小盒子 (Flex 項目) */
 .pros-box,
 .cons-box {
-    flex: 1;                /* 讓兩個盒子"平分"空間 */
-    min-width: 300px;       /* 每個盒子的最小寬度 (確保不會太擠) */
-    
-    /* (可選) 增加一點視覺效果 */
+    flex: 1;                
+    min-width: 300px;       
     background-color: #fcfcfc;
     border: 1px solid #eee;
     padding: 20px;
     border-radius: 8px;
 }
 
-/* (可選) 調整一下 h3 在盒子裡的邊距 */
 .pros-box h3,
 .cons-box h3 {
-    margin-top: 0; /* 移除 h3 在盒子頂部的預設邊距 */
+    margin-top: 0; 
 }
-
-/* (可選) 幫優點和挑戰的 h3 標題加上一點顏色 */
-.pros-box h3 {
-    color: #2a9d8f; /* 優點用綠色 (同 H2) */
-}
-.cons-box h3 {
-    color: #e76f51; /* 挑戰用橘紅色 */
-}
-/* --- 並排樣式結束 --- */
-
+.pros-box h3 { color: #2a9d8f; }
+.cons-box h3 { color: #e76f51; }
 
 /* 頁腳 */
 footer {
@@ -181,4 +164,55 @@ footer {
     padding: 20px;
     color: #777;
     font-size: 0.9rem;
+}
+
+
+/* ========================================= */
+/* ======== ⬇️ 手機版專用設定 (RWD) ⬇️ ======== */
+/* ========================================= */
+
+/* 當螢幕寬度小於 768px (平板或手機) 時，執行下面的設定 */
+@media (max-width: 768px) {
+    
+    /* 1. 讓容器邊距變窄，爭取更多空間給文字 */
+    .container {
+        padding: 10px;
+        width: 100%; /* 確保用滿寬度 */
+        box-sizing: border-box; /* 確保 padding 不會撐大寬度 */
+    }
+
+    /* 2. 標題字體變小，避免換行太醜 */
+    header h1 {
+        font-size: 1.8rem;
+    }
+    h2 {
+        font-size: 1.5rem;
+    }
+    h3 {
+        font-size: 1.3rem;
+    }
+
+    /* 3. 內容區塊的內距變小 */
+    main {
+        padding: 1.2rem;
+    }
+
+    /* 4. 讓「優點與挑戰」強制變成上下堆疊，不要硬擠在同一排 */
+    .pros-cons-container {
+        flex-direction: column; /* 改成直向排列 */
+        gap: 20px;
+    }
+
+    /* 5. 讓盒子取消最小寬度限制，避免手機太小時會超出畫面 */
+    .pros-box,
+    .cons-box {
+        min-width: auto; 
+        width: 100%; /* 佔滿手機寬度 */
+        box-sizing: border-box;
+    }
+
+    /* 6. 圖片高度可以稍微縮小一點 */
+    .image-container {
+        max-height: 250px;
+    }
 }
