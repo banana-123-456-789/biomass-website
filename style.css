@@ -1,0 +1,184 @@
+/* --- 生質能網站 樣式表 (最終版) --- */
+
+/* 基礎設定 (已套用新字體) */
+body {
+    /* 1. 優先用 'Noto Sans TC' (思源黑體) 
+       2. 如果失敗，才用 sans-serif (系統預設黑體) */
+    font-family: 'Noto Sans TC', sans-serif;
+    line-height: 1.6;
+    background-color: #f4f7f6;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* 容器 */
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* 頂部標題 */
+header {
+    background-color: #2a9d8f;
+    color: #ffffff;
+    padding: 2rem 1rem;
+    text-align: center;
+    border-radius: 8px 8px 0 0;
+}
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    /* 1. 英文/數字用 'Lato'
+       2. 中文用 'Noto Sans TC' */
+    font-family: 'Lato', 'Noto Sans TC', sans-serif;
+}
+header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* 導覽列 */
+nav {
+    background-color: #264653; /* 您可以改成 #3a5a40 (森林綠) */
+    padding: 1rem;
+    text-align: center;
+    border-radius: 0 0 8px 8px;
+    margin-bottom: 20px;
+}
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px 15px;
+    margin: 0 5px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+nav a:hover {
+    background-color: #C0D1B4; /* 淺綠色 */
+    color: #3a5a40;            /* 搭配的深綠色文字 */
+}
+
+/* 內容區塊 */
+main {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+section {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #eee;
+}
+section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+/* 標題 H2 (大標題) */
+h2 {
+    color: #2a9d8f;
+    font-size: 2rem;
+    border-bottom: 2px solid #e9c46a;
+    padding-bottom: 10px;
+    font-family: 'Lato', 'Noto Sans TC', sans-serif; /* 套用新字體 */
+}
+
+/* 標題 H3 (子標題) (已修正歪掉的問題) */
+h3 {
+    color: #264653;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    margin-left: 0; /* 修正縮排 */
+    font-family: 'Lato', 'Noto Sans TC', sans-serif; /* 套用新字體 */
+}
+
+ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+/* --- 圖片區塊樣式 --- */
+.image-container {
+    width: 100%;
+    max-height: 400px;
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: #eee;
+}
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.image-caption {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 10px;
+    font-style: italic;
+}
+#image-showcase {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #eee;
+}
+/* --- 圖片樣式結束 --- */
+
+
+/* --- 優點與挑戰 (並排) --- */
+
+/* 大容器 (Flex 容器) */
+.pros-cons-container {
+    display: flex;          /* 啟動 Flexbox！讓裡面的項目並排 */
+    flex-direction: row;    /* 方向是橫向 (row) */
+    gap: 30px;              /* 兩個盒子中間的間距 */
+    flex-wrap: wrap;        /* 允許換行 (當螢幕太小時) */
+}
+
+/* 優點和挑戰的小盒子 (Flex 項目) */
+.pros-box,
+.cons-box {
+    flex: 1;                /* 讓兩個盒子"平分"空間 */
+    min-width: 300px;       /* 每個盒子的最小寬度 (確保不會太擠) */
+    
+    /* (可選) 增加一點視覺效果 */
+    background-color: #fcfcfc;
+    border: 1px solid #eee;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* (可選) 調整一下 h3 在盒子裡的邊距 */
+.pros-box h3,
+.cons-box h3 {
+    margin-top: 0; /* 移除 h3 在盒子頂部的預設邊距 */
+}
+
+/* (可選) 幫優點和挑戰的 h3 標題加上一點顏色 */
+.pros-box h3 {
+    color: #2a9d8f; /* 優點用綠色 (同 H2) */
+}
+.cons-box h3 {
+    color: #e76f51; /* 挑戰用橘紅色 */
+}
+/* --- 並排樣式結束 --- */
+
+
+/* 頁腳 */
+footer {
+    text-align: center;
+    margin-top: 20px;
+    padding: 20px;
+    color: #777;
+    font-size: 0.9rem;
+}
